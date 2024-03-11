@@ -595,6 +595,12 @@ a.button:hover, button.button:hover, form button:hover {
   --button-text-color: white;
 }
 
+a.button:hover, button.button:hover, form button:hover {
+  --button-border-color: transparent;
+  --button-background-color: var(--link-color);
+  --button-text-color: white;
+}
+
 a.button.primary, button.button.primary, form button.primary {
   --button-border-color: transparent;
   --button-background-color: var(--link-color);
@@ -699,15 +705,15 @@ span.icon svg {
   fill: currentcolor;
 }
 
-span.icon[data-position='first'] svg {
+span.icon[data-position='first'] svg, img {
   margin-left: 0;
 }
 
-span.icon[data-position='last'] svg {
+span.icon[data-position='last'] svg, img {
   margin-right: 0;
 }
 
-span.icon[data-position='only'] svg {
+span.icon[data-position='only'] svg, img {
   margin: 0;
 }
 

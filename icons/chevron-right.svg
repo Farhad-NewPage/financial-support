@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+    <use href="#icons-sprite-chevron-right">
+        <svg id="icons-sprite-chevron-right"
+            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 14" fill="none" aria-labelledby="chevron-right-icon">
+            <title id="chevron-right-icon" lang="en">Chevron Right</title>
+            <path d="M1.34326 1.34314L7.00012 6.99999L1.34326 12.6568" stroke-width="2"></path>
+        </svg>
+    </use>
+</svg>

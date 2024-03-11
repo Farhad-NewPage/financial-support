@@ -163,6 +163,7 @@ export default async function decorate(block) {
 
   // Nav Brand
   const navBrand = nav.querySelector(".nav-brand");
+  $(navBrand).find("a").attr({ title: "IBRANCE", text: "" });
   const brandLink = navBrand.querySelector(".button");
   if (brandLink) {
     brandLink.className = "";

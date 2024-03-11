@@ -1,0 +1,217 @@
+  .block-tabs .tabpanel[aria-hidden="true"] {
+    display: none;
+  }
+
+  
+  .section.block-tabs-container {
+    padding-top: 0;
+  }
+  
+  .block-tabs {
+    margin: 0;
+    position: relative;
+  }
+  
+  .block-tabs div[role="tablist"] {
+    -ms-overflow-style: none;
+    display: flex;
+    overflow: auto;
+    overflow-y: hidden;
+    position: relative;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    z-index: 2;
+  }
+  
+  .block-tabs div[role="tablist"]::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .block-tabs.center .tab-headline {
+    text-align: center;
+  }
+  
+  .block-tabs div[role="tablist"] .tab-list-container {
+    box-sizing: content-box;
+    display: flex;
+    padding: 0;
+    width: 100%;
+    gap: 2px;
+  }
+  
+  .block-tabs div[role="tablist"] .tab-list-container span.icon {
+    width: 50px;
+    height: 50px;
+    aspect-ratio: 3 / 2;
+  }
+  
+  @media (min-width: 768px) {
+    .block-tabs div[role="tablist"] .tab-list-container {
+      padding-bottom: 0 8.3%;
+    }
+  
+    .block-tabs.tel-link-disabled .tab-content .default-content-wrapper a[href*="tel:"] {
+      text-decoration: none;
+      cursor: none;
+      color: var(--text-color);
+      pointer-events: none;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .block-tabs .tab-list-container button {
+      display: block;
+    }
+  }
+  
+  .block-tabs .tab-list-container .select {
+    display: block;
+  }
+  
+  @media (min-width: 768px) {
+    .block-tabs .tab-list-container .select {
+      display: none;
+    }
+  
+    .block-tabs .tab-content {
+      padding: var(--spacing-55);
+    }
+  }
+  
+  .block-tabs .tab-list-container .select select {
+    text-align: center;
+  }
+  
+  .block-tabs .tab-content {
+    background-color: var(--gray-background-color);
+    padding: var(--spacing-30);
+  }
+  
+  .block-tabs.contained .tab-content .tab-content-container,
+  [role="tabpanel"]>.section>.content {
+    margin: 0 auto;
+    position: relative;
+  }
+  
+  .block-tabs.center .tab-content .default-content-wrapper p.center {
+    text-align: center;
+  }
+  
+  .block-tabs div[role="tablist"] button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 50%;
+    width: 100%;
+    background-color: var(--gray-10);
+    color: var(--ibrance-gray);
+    border-top: 6px solid var(--background-color);
+    cursor: pointer;
+    font-weight: 700;
+    padding: var(--spacing-40);
+    text-decoration: none;
+    transition: color 0.1s ease-in-out;
+    z-index: 1;
+  }
+  
+  .block-tabs div[role="tablist"] button[aria-selected="true"] {
+    background: var(--gray-background-color);
+    color: var(--ibrance-purple);
+    border: 0;
+    border-top: 6px solid var(--ibrance-dark-purple);
+  }
+  
+  .block-tabs div[role="tablist"] button[aria-selected="false"] span.icon {
+    filter: grayscale(1);
+  }
+  
+  .block-tabs .tabpanel.hidden .section {
+    display: none;
+  }
+  
+  .block-tabs .tab-inner-btn {
+    display: none;
+  }
+  
+  .block-tabs.mobile-tabs .tab-inner-btn {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 12px 14px;
+  }
+  
+  .block-tabs.mobile-tabs .tab-content {
+    padding: 0;
+  }
+  
+  .block-tabs.mobile-tabs .tab-list {
+    display: none;
+  }
+  
+  .block-tabs.mobile-tabs .tab-inner-btn[aria-selected="false"] {
+    border-left: 3px solid transparent;
+  }
+  
+  .block-tabs.mobile-tabs .tab-inner-btn[aria-selected="false"]::after {
+    content: '+';
+    position: absolute;
+    right: 15px;
+    font-size: 18px;
+  }
+  
+  .block-tabs.mobile-tabs .tab-inner-btn[aria-selected="true"] {
+    border-left: 3px solid var(--link-color);
+    color: var(--link-color);
+    font-weight: bold;
+  }
+  
+  .block-tabs.mobile-tabs .tab-inner-btn[aria-selected="true"]::after {
+    content: '–';
+    position: absolute;
+    right: 15px;
+    font-size: 18px;
+  }
+  
+  .block-tabs.mobile-tabs .tabpanel:not(.hidden) {
+    border-bottom: 1px solid #fff;
+  }
+
+  .dosing-tab-1 > .default-content-wrapper:first-child > p picture:first-child{
+    display: none;
+  }
+  
+  @media (min-width: 768px) {
+    .block-tabs.mobile-tabs .tab-content {
+      padding: var(--spacing-30);
+    }
+  
+    .block-tabs.mobile-tabs .tab-list {
+      display: inherit;
+    }
+  
+    .block-tabs.mobile-tabs .tab-inner-btn {
+      display: none;
+    }
+  
+    .block-tabs.mobile-tabs .tabpanel:not(.hidden) {
+      border-bottom: none;
+    }
+
+    .dosing-tab-1 > .default-content-wrapper:first-child > p picture + picture {
+      display: none;
+    }
+
+    .dosing-tab-1 > .default-content-wrapper:first-child > p picture:first-child {
+      display: block;
+    }
+  }
+  
+  .block-tabs.tabs-mobile-alignment div[role="tablist"] button {
+    padding-left: 10px;
+    padding-right: 5px;
+  }
+
+  .tabpanel > .section:nth-child(2) {
+    margin-top: var(--spacing-40);
+  }

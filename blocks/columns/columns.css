@@ -528,7 +528,7 @@
   text-align: center;
   padding: 35px 20px 20px;
   font-size: var(--body-font-size-xs);
-  color: #124e76;
+  color: var(--heading-color);
 }
 
 .columns.oncology-small > div div:nth-child(3) {
@@ -580,7 +580,7 @@
 }
 
 .columns.oncology-together a:any-link {
-  color: var(--ibrance-blue);
+  color: var(--heading-color);
   text-decoration: none;
   background: none;
 }
@@ -687,7 +687,7 @@
 
   .columns.oncology-small > div div:nth-child(2) a {
     text-decoration: none;
-    color: #124e76;
+    color: var(--heading-color);
     cursor: auto;
   }
 
@@ -753,7 +753,7 @@
 .columns.oncology-together {
   position: relative;
   margin-top: var(--spacing-40);
-  color: var(--ibrance-blue);
+  color: var(--heading-color);
 }
 
 .columns.oncology-together .oncology-link-overlay {
@@ -778,6 +778,7 @@
   white-space: nowrap;
   opacity: 0;
   margin: 0;
+  color: var(--heading-color);
 }
 
 .columns.oncology-together .icon-pfizer-oncology-together-logo {

@@ -1,17 +1,28 @@
 export default function decorate(block) {
   const cols = [...block.firstElementChild.children];
-  block.classList.add(`columns-${cols.length}-cols`);
-
   // setup image columns
   [...block.children].forEach((row) => {
     [...row.children].forEach((col) => {
-      const pic = col.querySelector('picture');
-      if (pic) {
-        const picWrapper = pic.closest('div');
-        if (picWrapper && picWrapper.children.length === 1) {
-          // picture is only content in column
-          picWrapper.classList.add('columns-img-col');
-        }
+      $(col).find("p").first().addClass("center");
+      const DesktopLogo = $(col).find("picture").first();
+      $(DesktopLogo)
+        .children()
+        .each(function (index, element) {
+          if (element.tagName === "SOURCE") {
+            $(element).attr("media", "(min-width: 600px)");
+          } else if (element.tagName === "IMG") {
+            $(element).attr({ width: 201, height: 150 });
+          }
+        });
+
+      const mobileLogo = $(col).find("picture:eq(1)");
+      if (mobileLogo.length) {
+        $(mobileLogo).addClass("icon icon-pot-logo");
+      } else {
+        const mobileLogo = $(row).children(":first").find("p > picture:eq(1)");
+        $(mobileLogo).addClass("icon icon-pot-logo");
+
+        $(col).prepend(mobileLogo);
       }
     });
   });

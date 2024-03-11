@@ -4,8 +4,8 @@ const createTab = (tab, index, className) => {
   button.className = className || "tab-btn";
   button.id = `tab-${id}`;
   button.innerHTML = tab.innerHTML;
-  button.setAttribute("aria-controls", `tabpanel-${id}`);
-  button.setAttribute("aria-selected", !index);
+  button.setAttribute("aria-controls", `tab-${id}`);
+  button.setAttribute("aria-selected", !!index);
   button.setAttribute("role", "tab");
   button.setAttribute("type", "button");
 
@@ -98,9 +98,9 @@ export default async function decorate(block) {
     // decorate tabpanel
     const tabpanel = createPanel(tab, block.children[i], i);
     tabpanel.className = "tabpanel";
-    tabpanel.id = `tab-panel-insured-${id}`;
+    tabpanel.id = `tab-insured-${id}`;
     tabpanel.setAttribute("aria-hidden", !!i);
-    tabpanel.setAttribute("aria-labelled-by", `tab-${id}`);
+    tabpanel.setAttribute("aria-labelledby", `tab-${id}`);
     tabpanel.setAttribute("role", "tabpanel");
     if (!hasWrapper(tabpanel.lastElementChild)) {
       tabpanel.lastElementChild.innerHTML = `<p>${tabpanel.lastElementChild.innerHTML}</p>`;

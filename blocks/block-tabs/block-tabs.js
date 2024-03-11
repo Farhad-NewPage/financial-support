@@ -100,7 +100,7 @@ export default async function decorate(block) {
     tabpanel.className = "tabpanel";
     tabpanel.id = `tab-panel-insured-${id}`;
     tabpanel.setAttribute("aria-hidden", !!i);
-    tabpanel.setAttribute("aria-labelledby", `tab-${id}`);
+    tabpanel.setAttribute("aria-labelled-by", `tab-${id}`);
     tabpanel.setAttribute("role", "tabpanel");
     if (!hasWrapper(tabpanel.lastElementChild)) {
       tabpanel.lastElementChild.innerHTML = `<p>${tabpanel.lastElementChild.innerHTML}</p>`;

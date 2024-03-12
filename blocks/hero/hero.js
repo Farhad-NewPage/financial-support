@@ -16,7 +16,12 @@ export default async function decorate(block) {
             if (element.tagName === "SOURCE") {
               $(element).attr("media", "(min-width: 600px)");
             } else if (element.tagName === "IMG") {
-              $(element).attr({ width: 1280, height: 420, loading: "eager" });
+              $(element).attr({
+                width: 1280,
+                height: 420,
+                loading: "eager",
+                alt: "Banner Image",
+              });
             }
           });
 

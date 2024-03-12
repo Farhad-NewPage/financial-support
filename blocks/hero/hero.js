@@ -21,6 +21,7 @@ export default async function decorate(block) {
                 height: 420,
                 loading: "eager",
                 alt: "Banner Image",
+                fetchpriority: "high",
               });
             }
           });

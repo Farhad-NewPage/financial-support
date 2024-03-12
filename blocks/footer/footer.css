@@ -187,11 +187,11 @@ footer .footer .footer-menu li:not(:last-of-type) {
 
   footer .footer .footer-menu li {
     white-space: nowrap;
+    padding: var(--spacing-10);
   }
 
   footer .footer .footer-menu li:not(:last-of-type) {
     margin-bottom: 0;
-    padding: var(--spacing-10);
   }
 }
 

@@ -85,6 +85,7 @@ footer .footer .footer-nav > ul > li > ul {
 
 footer .footer .footer-nav > ul > li > ul > li:not(:last-of-type) {
   margin-bottom: var(--spacing-10);
+  padding: var(--spacing-20);
 }
 
 @media (min-width: 700px) {
@@ -190,6 +191,7 @@ footer .footer .footer-menu li:not(:last-of-type) {
 
   footer .footer .footer-menu li:not(:last-of-type) {
     margin-bottom: 0;
+    padding: var(--spacing-10);
   }
 }
 

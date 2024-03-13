@@ -1,0 +1,2 @@
+#Any search crawler can crawl our site
+User-agent: *

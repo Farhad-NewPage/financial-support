@@ -13,7 +13,7 @@ import {
   loadCSS,
 } from "./aem.js";
 
-const LCP_BLOCKS = []; // add your LCP blocks to the list
+const LCP_BLOCKS = ["hero"]; // add your LCP blocks to the list
 
 /**
  * Builds hero block and prepends to main in a new section.
@@ -28,9 +28,30 @@ function buildHeroBlock(main) {
     picture &&
     h1.compareDocumentPosition(picture) & Node.DOCUMENT_POSITION_PRECEDING
   ) {
-    const section = document.createElement("div");
-    section.append(buildBlock("hero", { elems: [picture, h1] }));
-    main.prepend(section);
+    // const section = document.createElement("div");
+    // section.append(buildBlock("hero", { elems: [picture, h1] }));
+    // main.prepend(section);
+
+    const banner = `<div class="section hero-container hero-full-width-container hero-text-overlay-container" data-section-status="loaded" data-="" style="">
+    <div class="hero-wrapper">
+        <div class="hero block text-overlay frosted-light light content-50 op-85" data-block-name="hero" data-block-status="loaded">
+            <div class="hero-banner">
+              <div class="hero-banner-img">
+              <div class="hero-banner-img-overlay"></div>
+                ${picture}
+              </div>
+            </div>
+  
+            <div class="hero-body">
+              <div>
+                ${h1}
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>`;
+
+    main.append(banner);
   }
 }
 
@@ -67,10 +88,10 @@ function buildAutoBlocks(main) {
 // eslint-disable-next-line import/prefer-default-export
 export function decorateMain(main) {
   // hopefully forward compatible button decoration
-  // decorateButtons(main);
-  // decorateIcons(main);
+  decorateButtons(main);
+  decorateIcons(main);
   //buildAutoBlocks(main);
-  // decorateSections(main);
+  decorateSections(main);
   decorateBlocks(main);
 }
 
@@ -138,3 +159,31 @@ async function loadPage() {
 }
 
 loadPage();
+
+/*
+<div class="section hero-container hero-full-width-container hero-text-overlay-container" data-section-status="loaded" data-="" style="">
+  <div class="hero-wrapper">
+      <div class="hero block text-overlay frosted-light light content-50 op-85" data-block-name="hero" data-block-status="loaded">
+          
+          <div class="hero-banner">
+            <div class="hero-banner-img">
+            <div class="hero-banner-img-overlay"></div>
+              <picture>
+                <source type="image/webp" srcset="./media_1e82107b7e975abc5e3531f73565933dcfc875694.jpeg?width=2000&amp;format=webply&amp;optimize=medium" media="(min-width: 600px)">
+                <source type="image/webp" srcset="./media_1e82107b7e975abc5e3531f73565933dcfc875694.jpeg?width=750&amp;format=webply&amp;optimize=medium" media="(min-width: 600px)">
+                <source type="image/jpeg" srcset="./media_1e82107b7e975abc5e3531f73565933dcfc875694.jpeg?width=2000&amp;format=jpeg&amp;optimize=medium" media="(min-width: 600px)">
+                <img loading="eager" alt="Banner Image" src="./media_1e82107b7e975abc5e3531f73565933dcfc875694.jpeg?width=750&amp;format=jpeg&amp;optimize=medium" width="1280" height="420" fetchpriority="high">
+              </picture>
+            </div>
+          </div>
+
+          <div class="hero-body">
+            <div>
+              <h1 id="making-your-support-needs-a-priority-together">Making Your Support Needs A Priority.<br>Together.</h1>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+*/

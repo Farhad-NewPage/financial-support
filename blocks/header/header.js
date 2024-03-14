@@ -141,7 +141,7 @@ export default async function decorate(block) {
   const nav = document.createElement("nav");
   nav.id = "nav";
   while (fragment.firstElementChild) nav.append(fragment.firstElementChild);
-  /*
+
   const classes = [
     "brand",
     "utility",
@@ -228,7 +228,7 @@ export default async function decorate(block) {
       });
   }
 
-  /* Pfizer Logo *
+  /* Pfizer Logo */
   const logoSection = nav.querySelector(".nav-logo");
   createSVGIcon(
     "pfizer-logo",
@@ -251,7 +251,7 @@ export default async function decorate(block) {
   isDesktop.addEventListener("change", () =>
     toggleMenu(nav, navSections, isDesktop.matches)
   );
-   */
+
   const navWrapper = document.createElement("div");
   navWrapper.className = "nav-wrapper";
   navWrapper.append(nav);

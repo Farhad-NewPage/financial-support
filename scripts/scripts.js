@@ -100,6 +100,9 @@ export function decorateMain(main) {
  * @param {Element} doc The container element
  */
 async function loadEager(doc) {
+  loadHeader(doc.querySelector("header"));
+  loadFooter(doc.querySelector("footer"));
+
   document.documentElement.lang = "en";
   decorateTemplateAndTheme();
   const main = doc.querySelector("main");
@@ -124,8 +127,8 @@ async function loadEager(doc) {
  * @param {Element} doc The container element
  */
 async function loadLazy(doc) {
-  loadHeader(doc.querySelector("header"));
-  loadFooter(doc.querySelector("footer"));
+  // loadHeader(doc.querySelector("header"));
+  // loadFooter(doc.querySelector("footer"));
 
   const main = doc.querySelector("main");
   await loadBlocks(main);

@@ -1,3 +1,5 @@
+import { createOptimizedPicture } from "../../scripts/aem.js";
+
 const $ = jQuery;
 
 export default async function decorate(block) {
@@ -9,22 +11,31 @@ export default async function decorate(block) {
         $(firstColumn).addClass("hero-banner-img");
         $(firstColumn).prepend('<div class="hero-banner-img-overlay"></div>');
 
-        $(firstColumn)
-          .find("picture")
-          .children()
-          .each(function (index, element) {
-            if (element.tagName === "SOURCE") {
-              $(element).attr("media", "(min-width: 600px)");
-            } else if (element.tagName === "IMG") {
-              $(element).attr({
-                width: 1280,
-                height: 420,
-                loading: "eager",
-                alt: "Banner Image",
-                fetchpriority: "high",
-              });
-            }
-          });
+        const source = $(firstColumn).find("picture img").attr("src");
+        const optPicture = createOptimizedPicture(
+          source,
+          "Banner Image",
+          false,
+          [{ media: "(min-width: 600px)", width: "1280" }, { width: "420" }]
+        );
+
+        $(firstColumn).find("picture").replaceWith(optPicture);
+        // $(firstColumn)
+        //   .find("picture")
+        //   .children()
+        //   .each(function (index, element) {
+        //     if (element.tagName === "SOURCE") {
+        //       $(element).attr("media", "(min-width: 600px)");
+        //     } else if (element.tagName === "IMG") {
+        //       $(element).attr({
+        //         width: 1280,
+        //         height: 420,
+        //         loading: "eager",
+        //         alt: "Banner Image",
+        //         fetchpriority: "high",
+        //       });
+        //     }
+        //   });
 
         break;
 

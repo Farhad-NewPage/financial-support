@@ -38,7 +38,8 @@ async function submitForm(form) {
   const payload = constructPayload(form);
   payload.timestamp = new Date().toJSON();
   const resp = await fetch(
-    `https://form.aem.page/main--helix-website--adobe${form.dataset.action}`,
+    // `https://form.aem.page/main--helix-website--adobe${form.dataset.action}`,
+    `https://admin.hlx.page/form/farhad-newpage/financial-support/en${form.dataset.action}.json`,
     {
       method: "POST",
       cache: "no-cache",

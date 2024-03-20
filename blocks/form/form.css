@@ -128,6 +128,12 @@ main .form {
     line-height: var(--type-body-xxs-lh);
     padding-bottom: 0;
   }
+
+  main .form .form-submit-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
   
   main .form-legal-wrapper p {
     font-size: var(--type-body-xxs-size);

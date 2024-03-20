@@ -3,7 +3,7 @@ main .form {
     padding: var(--spacing-s);
     border-radius: var(--card-border-radius-l);
     filter: var(--image-filter-drop-shadow-small);
-    border: solid 1px var(--bg-color-grey);
+    border: solid 1px var(--ibrance-dark-purple);
   }
   
   main .form h2 {
@@ -29,6 +29,25 @@ main .form {
     line-height: var(--type-body-s-lh);
     font-family: var(--body-font-family);
   }
+
+  main .form input.invalid,
+  main .form textarea.invalid,
+  main .form select.invalid {
+    border: solid 1px var(--error-red);
+  }
+
+  main .form input.invalid:hover,
+  main .form textarea.invalid:hover,
+  main .form select.invalid:hover {
+    border: solid 1px var(--error-red);
+  }
+
+  .error-message {
+    display: block;
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+  }
   
   main .form textarea {
     min-height: 100px;
@@ -36,7 +55,7 @@ main .form {
   
   main .form input:hover,
   main .form select:hover {
-    border-color: var(--color-font-grey);
+    border-color: var(--ibrance-dark-purple);
   }
   
   main .form label {
@@ -54,6 +73,11 @@ main .form {
   }
   
   main .form .field-wrapper {
+    margin-bottom: var(--spacing-m);
+  }
+
+  main .form .field-wrapper > div {
+    width: 100%;
     margin-bottom: var(--spacing-m);
   }
   

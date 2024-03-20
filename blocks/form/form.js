@@ -1,5 +1,7 @@
 import { addInViewAnimationToSingleElement } from "../../utils/helpers.js";
 
+let globalBlock = null;
+
 function createSelect(fd) {
   const select = document.createElement("select");
   select.id = fd.Field;
@@ -38,7 +40,6 @@ async function submitForm(form) {
   const payload = constructPayload(form);
   payload.timestamp = new Date().toJSON();
   const resp = await fetch(
-    // `https://form.aem.page/main--helix-website--adobe${form.dataset.action}`,
     `https://admin.hlx.page/form/farhad-newpage/financial-support/en${form.dataset.action}.json`,
     {
       method: "POST",
@@ -56,6 +57,7 @@ async function submitForm(form) {
 function createButton(fd) {
   const button = document.createElement("button");
   button.textContent = fd.Label;
+  button.setAttribute("id", "submit-button");
   button.classList.add("button");
   if (fd.Type === "submit") {
     button.addEventListener("click", async (event) => {
@@ -70,6 +72,7 @@ function createButton(fd) {
       }
     });
   }
+
   return button;
 }
 
@@ -79,15 +82,45 @@ function createHeading(fd, el) {
   return heading;
 }
 
+function isInputValid(value, pattern) {
+  if (pattern && !eval(pattern).test(value)) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
 function createInput(fd) {
+  const inputWrapper = document.createElement("div");
   const input = document.createElement("input");
   input.type = fd.Type;
   input.id = fd.Field;
   input.setAttribute("placeholder", fd.Placeholder);
   if (fd.Mandatory === "x") {
     input.setAttribute("required", "required");
+    input.setAttribute("pattern", fd.pattern);
+    input.addEventListener("input", function (event) {
+      const errorMessage = this.parentNode.querySelector(".error-message");
+      if (!isInputValid(event.target.value, fd.pattern)) {
+        this.classList.add("invalid");
+        if (!errorMessage) {
+          const error = document.createElement("div");
+          error.classList.add("error-message");
+          error.textContent = fd.ErrorMessage;
+          inputWrapper.appendChild(error);
+        }
+      } else {
+        this.classList.remove("invalid");
+        if (errorMessage) {
+          errorMessage.remove();
+        }
+      }
+
+      updateSubmitButtonState();
+    });
   }
-  return input;
+  inputWrapper.appendChild(input);
+  return inputWrapper;
 }
 
 function createTextArea(fd) {
@@ -144,6 +177,7 @@ export async function createForm(formURL) {
   const resp = await fetch(pathname);
   const json = await resp.json();
   const form = document.createElement("form");
+  form.setAttribute("id", "dynamicForm");
   const rules = [];
   // eslint-disable-next-line prefer-destructuring
   form.dataset.action = pathname.split(".json")[0];
@@ -183,6 +217,7 @@ export async function createForm(formURL) {
 
     if (fd.Rules) {
       try {
+        console.log("RULES ARE", fd.Rules);
         rules.push({ fieldId, rule: JSON.parse(fd.Rules) });
       } catch (e) {
         // eslint-disable-next-line no-console
@@ -195,11 +230,35 @@ export async function createForm(formURL) {
   form.addEventListener("change", () => applyRules(form, rules));
   applyRules(form, rules);
   fill(form);
+
+  updateSubmitButtonState(form, form.querySelector("#submit-button"));
+
   return form;
+}
+
+function updateSubmitButtonState(
+  form = globalBlock.querySelector("#dynamicForm")
+) {
+  const formFields = form.querySelectorAll("input, select");
+  let isValid = true;
+  formFields.forEach((field) => {
+    if (field.required && !isInputValid(field.value, field.pattern)) {
+      isValid = false;
+    }
+  });
+
+  const button = form.querySelector("#submit-button");
+
+  if (isValid) {
+    button.removeAttribute("disabled");
+  } else {
+    button.setAttribute("disabled", "disabled");
+  }
 }
 
 export default async function decorate(block) {
   const form = block.querySelector('a[href$=".json"]');
+  globalBlock = block;
   addInViewAnimationToSingleElement(block, "fade-up");
   if (form) {
     form.replaceWith(await createForm(form.href));

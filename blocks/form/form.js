@@ -1,5 +1,8 @@
 import { addInViewAnimationToSingleElement } from "../../utils/helpers.js";
+import { fetchPlaceholders } from "/scripts/aem.js";
 
+// fetch placeholders from the 'en' folder
+const placeholders = await fetchPlaceholders();
 let globalBlock = null;
 
 function createSelect(fd) {
@@ -95,7 +98,10 @@ function createInput(fd) {
   const input = document.createElement("input");
   input.type = fd.Type;
   input.id = fd.Field;
-  input.setAttribute("placeholder", fd.Placeholder);
+  const { [`${fd.Field.toLowerCase()}Placeholder`]: fieldPlaceHolder } =
+    placeholders;
+  console.log(`${fd.Field.toLowerCase()}Placeholder`, fieldPlaceHolder);
+  input.setAttribute("placeholder", fieldPlaceHolder);
   if (fd.Mandatory === "x") {
     input.setAttribute("required", "required");
     input.setAttribute("pattern", fd.pattern);

@@ -142,7 +142,9 @@ function createTextArea(fd) {
 function createLabel(fd) {
   const label = document.createElement("label");
   label.setAttribute("for", fd.Field);
-  label.textContent = fd.Label;
+  const { [`${fd.Field.toLowerCase()}Label`]: fieldLabel } = placeholders;
+  label.textContent = fieldLabel;
+  console.log(`${fd.Field.toLowerCase()}Label`, fieldLabel);
   if (fd.Mandatory === "x") {
     label.classList.add("required");
   }

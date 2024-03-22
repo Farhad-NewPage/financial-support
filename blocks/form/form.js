@@ -2,15 +2,19 @@ import { addInViewAnimationToSingleElement } from "../../utils/helpers.js";
 import { fetchPlaceholders } from "/scripts/aem.js";
 
 // fetch placeholders from the 'en' folder
-const placeholders = await fetchPlaceholders();
+const placeholders = await fetchPlaceholders("fr");
 let globalBlock = null;
 
 function createSelect(fd) {
+  const wrapper = document.createElement("div");
   const select = document.createElement("select");
   select.id = fd.Field;
   if (fd.Placeholder) {
     const ph = document.createElement("option");
-    ph.textContent = fd.Placeholder;
+    const { [`${fd.Field.toLowerCase()}Placeholder`]: selectPlaceHolder } =
+      placeholders;
+    ph.textContent = selectPlaceHolder;
+    ph.setAttribute("value", "");
     ph.setAttribute("selected", "");
     ph.setAttribute("disabled", "");
     select.append(ph);
@@ -21,9 +25,32 @@ function createSelect(fd) {
     option.value = o.trim();
     select.append(option);
   });
-  if (fd.Mandatory === "x") {
+  if (fd.Mandatory === "yes") {
     select.setAttribute("required", "required");
+
+    select.addEventListener("change", function () {
+      /*
+      const errorMessage = this.parentNode.querySelector(".error-message");
+      const selectedOption = select.value;
+      if (selectedOption === select.getAttribute("placeholder")) {
+        this.classList.add("invalid");
+        if (!errorMessage) {
+          const error = document.createElement("div");
+          error.classList.add("error-message");
+          error.textContent = fd.ErrorMessage;
+          wrapper.appendChild(error);
+        }
+      } else {
+        this.classList.remove("invalid");
+        if (errorMessage) {
+          errorMessage.remove();
+        }
+      }
+      */
+      updateSubmitButtonState();
+    });
   }
+  // wrapper.appendChild(select);
   return select;
 }
 
@@ -59,20 +86,21 @@ async function submitForm(form) {
 
 function createButton(fd) {
   const button = document.createElement("button");
-  button.textContent = fd.Label;
+  const { [`${fd.Field.toLowerCase()}Label`]: buttonLabel } = placeholders;
+  button.textContent = buttonLabel;
   button.setAttribute("id", "submit-button");
   button.classList.add("button");
   if (fd.Type === "submit") {
     button.addEventListener("click", async (event) => {
       const form = button.closest("form");
       if (fd.Placeholder) form.dataset.action = fd.Placeholder;
-      if (form.checkValidity()) {
-        event.preventDefault();
-        button.setAttribute("disabled", "");
-        await submitForm(form);
-        const redirectTo = fd.Extra;
-        window.location.href = redirectTo;
-      }
+      // if (form.checkValidity()) {
+      event.preventDefault();
+      button.setAttribute("disabled", "");
+      await submitForm(form);
+      const redirectTo = fd.Extra;
+      window.location.href = redirectTo;
+      // }
     });
   }
 
@@ -100,29 +128,30 @@ function createInput(fd) {
   input.id = fd.Field;
   const { [`${fd.Field.toLowerCase()}Placeholder`]: fieldPlaceHolder } =
     placeholders;
-  console.log(`${fd.Field.toLowerCase()}Placeholder`, fieldPlaceHolder);
   input.setAttribute("placeholder", fieldPlaceHolder);
-  if (fd.Mandatory === "x") {
+  if (fd.Mandatory === "yes") {
     input.setAttribute("required", "required");
     input.setAttribute("pattern", fd.pattern);
     input.addEventListener("input", function (event) {
-      const errorMessage = this.parentNode.querySelector(".error-message");
-      if (!isInputValid(event.target.value, fd.pattern)) {
-        this.classList.add("invalid");
-        if (!errorMessage) {
-          const error = document.createElement("div");
-          error.classList.add("error-message");
-          error.textContent = fd.ErrorMessage;
-          inputWrapper.appendChild(error);
+      input.addEventListener("input", function (event) {
+        const errorMessage = this.parentNode.querySelector(".error-message");
+        if (!isInputValid(event.target.value, fd.pattern)) {
+          this.classList.add("invalid");
+          if (!errorMessage) {
+            const error = document.createElement("div");
+            error.classList.add("error-message");
+            error.textContent = fd.ErrorMessage;
+            inputWrapper.appendChild(error);
+          }
+        } else {
+          this.classList.remove("invalid");
+          if (errorMessage) {
+            errorMessage.remove();
+          }
         }
-      } else {
-        this.classList.remove("invalid");
-        if (errorMessage) {
-          errorMessage.remove();
-        }
-      }
 
-      updateSubmitButtonState();
+        updateSubmitButtonState();
+      });
     });
   }
   inputWrapper.appendChild(input);
@@ -133,7 +162,7 @@ function createTextArea(fd) {
   const input = document.createElement("textarea");
   input.id = fd.Field;
   input.setAttribute("placeholder", fd.Placeholder);
-  if (fd.Mandatory === "x") {
+  if (fd.Mandatory === "yes") {
     input.setAttribute("required", "required");
   }
   return input;
@@ -144,8 +173,7 @@ function createLabel(fd) {
   label.setAttribute("for", fd.Field);
   const { [`${fd.Field.toLowerCase()}Label`]: fieldLabel } = placeholders;
   label.textContent = fieldLabel;
-  console.log(`${fd.Field.toLowerCase()}Label`, fieldLabel);
-  if (fd.Mandatory === "x") {
+  if (fd.Mandatory === "yes") {
     label.classList.add("required");
   }
   return label;
@@ -185,7 +213,7 @@ export async function createForm(formURL) {
   const resp = await fetch(pathname);
   const json = await resp.json();
   const form = document.createElement("form");
-  form.setAttribute("id", "dynamicForm");
+  form.setAttribute("id", "regForm");
   const rules = [];
   // eslint-disable-next-line prefer-destructuring
   form.dataset.action = pathname.split(".json")[0];
@@ -225,7 +253,6 @@ export async function createForm(formURL) {
 
     if (fd.Rules) {
       try {
-        console.log("RULES ARE", fd.Rules);
         rules.push({ fieldId, rule: JSON.parse(fd.Rules) });
       } catch (e) {
         // eslint-disable-next-line no-console
@@ -239,18 +266,22 @@ export async function createForm(formURL) {
   applyRules(form, rules);
   fill(form);
 
-  updateSubmitButtonState(form, form.querySelector("#submit-button"));
+  updateSubmitButtonState(form);
 
   return form;
 }
 
-function updateSubmitButtonState(
-  form = globalBlock.querySelector("#dynamicForm")
-) {
+function updateSubmitButtonState(form = globalBlock.querySelector("#regForm")) {
   const formFields = form.querySelectorAll("input, select");
   let isValid = true;
   formFields.forEach((field) => {
-    if (field.required && !isInputValid(field.value, field.pattern)) {
+    if (
+      ["text", "email"].includes(field.type) &&
+      field.required &&
+      !isInputValid(field.value, field.pattern)
+    ) {
+      isValid = false;
+    } else if (field.type === "select-one" && field.value === "") {
       isValid = false;
     }
   });

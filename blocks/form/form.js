@@ -209,17 +209,13 @@ function fill(form) {
 }
 
 export async function createForm(formURL) {
-  const { pathname: windowPathName } = window.location;
   const { pathname } = new URL(formURL);
   const resp = await fetch(pathname);
   const json = await resp.json();
   const form = document.createElement("form");
   form.setAttribute("id", "regForm");
   const rules = [];
-  // eslint-disable-next-line prefer-destructuring
-  const paths = windowPathName.split("/");
-  const directory = paths.length > 2 ? `/${paths[1]}` : "/en";
-  form.dataset.action = directory + pathname.split(".json")[0];
+  form.dataset.action = pathname.split(".json")[0];
   json.data.forEach((fd) => {
     fd.Type = fd.Type || "text";
     const fieldWrapper = document.createElement("div");
@@ -299,7 +295,16 @@ function updateSubmitButtonState(form = globalBlock.querySelector("#regForm")) {
 }
 
 export default async function decorate(block) {
+  const { pathname } = window.location;
+  const pathStrings = pathname.split("/");
+  const directory = pathStrings.length > 2 ? pathStrings[1] : pathStrings[0];
   const form = block.querySelector('a[href$=".json"]');
+  // Get the current href attribute value
+  const currentHref = form.getAttribute("href");
+  // Set the new href attribute value
+  if (!currentHref.startsWith(directory)) {
+    form.setAttribute("href", `/${directory}${currentHref}`);
+  }
   globalBlock = block;
   addInViewAnimationToSingleElement(block, "fade-up");
   if (form) {

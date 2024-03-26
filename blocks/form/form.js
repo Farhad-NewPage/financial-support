@@ -296,7 +296,8 @@ function updateSubmitButtonState(form = globalBlock.querySelector("#regForm")) {
 
 export default async function decorate(block) {
   const { pathname } = window.location;
-  const pathStrings = pathname.split("/");
+  const splitString = pathname.includes("/en") ? "/en" : "/";
+  const pathStrings = pathname.split(splitString);
   const directory = pathStrings.length > 2 ? pathStrings[1] : pathStrings[0];
   const form = block.querySelector('a[href$=".json"]');
   // Get the current href attribute value

@@ -151,6 +151,7 @@ export default async function decorate(block) {
     "social",
     "menu",
     "access",
+    "language",
     "logo",
   ];
   classes.forEach((c, i) => {
@@ -226,6 +227,58 @@ export default async function decorate(block) {
           "data-position": "only",
         });
       });
+  }
+
+  // Nav Language
+  const langSection = nav.querySelector(".nav-language");
+  removeParentAndAssignToGrandParent(langSection);
+  const radioContainer = document.createElement("div");
+  const selectedLang = localStorage.getItem("LANGUAGE") || "en";
+  if (langSection) {
+    const items = langSection.querySelector(":scope ul");
+    items.querySelectorAll("li").forEach((option, index) => {
+      const container = document.createElement("div");
+      var radio = document.createElement("input");
+      radio.type = "radio";
+      radio.name = "options";
+      radio.value = option.textContent.slice(0, 2).toLowerCase();
+
+      if (radio.value === selectedLang) {
+        radio.checked = true;
+      }
+
+      radio.addEventListener("click", function () {
+        let currentLang = option.textContent.slice(0, 2).toLowerCase();
+        if (currentLang === localStorage.getItem("LANGUAGE")) {
+          return;
+        }
+
+        localStorage.setItem("LANGUAGE", currentLang);
+        const { pathname } = window.location;
+        const strings = pathname.split("/");
+        if (currentLang === "en") {
+          currentLang = "";
+        }
+        if (["fr", "sp"].includes(strings[1])) {
+          strings.splice(1, 1);
+        } else {
+          strings.splice(0, 0, currentLang);
+        }
+
+        window.location.href = strings.join("/").replace(/\/{2,}/g, "/");
+      });
+
+      // Create label element
+      var label = document.createElement("label");
+      label.textContent = option.textContent;
+
+      // Append radio button and label to container
+      container.appendChild(radio);
+      container.appendChild(label);
+      radioContainer.appendChild(container);
+      radioContainer.appendChild(document.createElement("br"));
+    });
+    items.replaceWith(radioContainer);
   }
 
   /* Pfizer Logo */

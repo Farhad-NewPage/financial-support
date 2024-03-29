@@ -508,6 +508,21 @@ header nav .nav-access svg {
   }
 }
 
+
+/* Language */
+header nav .nav-language {
+  display: none;
+  visibility: hidden;
+  color: var(--gray-70);
+  font-size: var(--body-font-size-xs);
+  margin-bottom: var(--spacing-horizontal);
+}
+
+header nav[aria-expanded=true] .nav-language {
+  display: block;
+  visibility: visible;
+}
+
 /* logo */
 header nav .nav-logo {
   grid-area: logo;

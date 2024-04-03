@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 40 40">
+    <defs>
+        <filter id="ts8zprf8da" width="160%" height="160%" x="-30%" y="-30%" filterUnits="objectBoundingBox">
+            <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2.5"/>
+            <feColorMatrix in="shadowBlurOuter1" result="shadowMatrixOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0"/>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+        <filter id="he9pq0s4oc" width="115%" height="115%" x="-7.5%" y="-7.5%" filterUnits="objectBoundingBox">
+            <feGaussianBlur in="SourceAlpha" result="shadowBlurInner1" stdDeviation="2.5"/>
+            <feOffset dy="1" in="shadowBlurInner1" result="shadowOffsetInner1"/>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" k2="-1" k3="1" operator="arithmetic" result="shadowInnerInner1"/>
+            <feColorMatrix in="shadowInnerInner1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.0847902098 0"/>
+        </filter>
+        <path id="rytqyzcm0b" d="M0 0H40V40H0z"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <g filter="url(#ts8zprf8da)" transform="translate(-301 -6770) translate(100 6071) translate(0 580) translate(198 80) translate(3 39)">
+                            <g>
+                                <g>
+                                    <use fill="#FD008D" xlink:href="#rytqyzcm0b"/>
+                                    <use fill="#000" filter="url(#he9pq0s4oc)" xlink:href="#rytqyzcm0b"/>
+                                </g>
+                                <path fill="#FFF" fill-rule="nonzero" d="M29.54 10l-1.73 1.732c-3.81 3.823-6.746 7.03-10.238 10.608l-3.548-3.006-1.87-1.579L9 21.487l1.87 1.579 5.29 4.482L17.879 29l1.59-1.592c4.39-4.406 7.511-7.92 11.802-12.225L33 13.45 29.54 10z"/>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

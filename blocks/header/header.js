@@ -305,6 +305,16 @@ export default async function decorate(block) {
     toggleMenu(nav, navSections, isDesktop.matches)
   );
 
+  const anchors = nav.querySelectorAll("a");
+  anchors.forEach((anchor) => {
+    const { href } = anchor;
+    if (href.startsWith("/") || href.endsWith("/")) {
+      let currentLang = localStorage.getItem("LANGUAGE");
+      currentLang = currentLang !== "en" ? `${currentLang}/` : "";
+      anchor.setAttribute("href", `${href + currentLang}`);
+    }
+  });
+
   const navWrapper = document.createElement("div");
   navWrapper.className = "nav-wrapper";
   navWrapper.append(nav);

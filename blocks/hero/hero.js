@@ -20,23 +20,6 @@ export default async function decorate(block) {
         );
 
         $(firstColumn).find("picture").replaceWith(optPicture);
-        // $(firstColumn)
-        //   .find("picture")
-        //   .children()
-        //   .each(function (index, element) {
-        //     if (element.tagName === "SOURCE") {
-        //       $(element).attr("media", "(min-width: 600px)");
-        //     } else if (element.tagName === "IMG") {
-        //       $(element).attr({
-        //         width: 1280,
-        //         height: 420,
-        //         loading: "eager",
-        //         alt: "Banner Image",
-        //         fetchpriority: "high",
-        //       });
-        //     }
-        //   });
-
         break;
 
       case 1:

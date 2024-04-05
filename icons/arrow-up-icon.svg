@@ -1,0 +1,9 @@
+<svg id="icons-sprite-isi-arrow-up" viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg">
+    <title>Arrow Up Icon</title>
+    <g transform="translate(4, 4)">
+        <path d="M0 8L1.41 9.41L7 3.83V16H9V3.83L14.58 9.42L16 8L8 0L0 8Z"></path>
+        <g>
+        </g>
+    </g>
+</svg>

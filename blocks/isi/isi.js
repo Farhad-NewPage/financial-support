@@ -98,7 +98,17 @@ export default function decorate(block) {
   }
   block.append(aside);
 
-  block.setAttribute("data-state", "inline");
+  block.setAttribute("data-state", "partial");
 
-  console.log("BLOCK", block);
+  const oncologyContent = document.querySelector(".oncology-together");
+  const footerTop = document.querySelector(".footer-wrapper");
+
+  window.addEventListener("scroll", function () {
+    const contentBottom = oncologyContent.getBoundingClientRect().bottom;
+    if (window.innerHeight > contentBottom) {
+      block.setAttribute("data-state", "inline");
+    } else {
+      block.setAttribute("data-state", "partial");
+    }
+  });
 }

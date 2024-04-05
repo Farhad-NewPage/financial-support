@@ -273,11 +273,12 @@
 }
 
 .sign-up-wrapper .form-wrapper select {
+    appearance: none;
     -webkit-appearance: none;
-    max-width: 84%;
+    max-width: 560px;
     min-height: 54px;
     font-style: oblique;
-    color:#919191
+    color:#919191;
 }
 
 @media only screen and (max-width: 991px) {
@@ -367,7 +368,7 @@
 .sign-up-wrapper .form-wrapper .form-input .selector::before {
     content: "";
     display: block;
-    background: url(/images/8d43c58bf59d3411dd007c3a7039f14d.svg) no-repeat center #c9c82c;
+    background: url(../../icons/select-arrow.svg) no-repeat center #c9c82c;
     background-size: 22px 12px;
     width: 48px;
     height: 54px;
@@ -382,7 +383,7 @@
 }
 
 .sign-up-wrapper .form-wrapper .form-input .selector.hover::before {
-    background: url(/images/8d43c58bf59d3411dd007c3a7039f14d.svg) no-repeat center #fd008d;
+    background: url(../../icons/select-arrow.svg) no-repeat center #fd008d;
     background-size:22px 12px
 }
 
@@ -482,7 +483,7 @@
 }
 
 .sign-up-wrapper .checker span {
-    background: url(/images/8f4ce0ca087d48f72ee1f5aef6ba8c40.svg) no-repeat 0 0;
+    background: url(../../icons/checkbox-green.svg) no-repeat 0 0;
     background-color: #fff;
     box-shadow: inset 0 1px 5px 0 rgba(0, 0, 0, .09);
     display: inline-block;
@@ -553,7 +554,7 @@
 .sign-up-wrapper .champion-date-wrapper::after {
     content: "";
     display: block;
-    background: url(/images/8d43c58bf59d3411dd007c3a7039f14d.svg) no-repeat center #c9c82c;
+    background: url(../../icons/select-arrow.svg) no-repeat center #c9c82c;
     background-size: 22px 12px;
     width: 48px;
     height: 54px;
@@ -564,7 +565,7 @@
 }
 
 .sign-up-wrapper .champion-date-wrapper:hover::after {
-    background: url(/images/8d43c58bf59d3411dd007c3a7039f14d.svg) no-repeat center #fd008d;
+    background: url(../../icons/select-arrow.svg) no-repeat center #fd008d;
     background-size:22px 12px
 }
 

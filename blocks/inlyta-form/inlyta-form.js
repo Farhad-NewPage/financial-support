@@ -16,7 +16,7 @@ function createSelect(fd) {
   select.setAttribute("id", "select");
   select.setAttribute("tab-index", -1);
   select.setAttribute("data-select2-id", "select2-data-state");
-  select.classList.add("select2-hidden-accessible");
+  // select.classList.add("select2-hidden-accessible");
   select.id = fd.Field;
 
   if (fd.Placeholder) {
@@ -27,14 +27,15 @@ function createSelect(fd) {
     ph.setAttribute("disabled", "");
     select.append(ph);
   }
-  fd.Options.split(",").forEach((o) => {
+  fd.Options.split(",").forEach((o, index) => {
     const option = document.createElement("option");
     option.textContent = o.trim();
+    option.setAttribute("data-select2-id", `${index}_${o.trim()}`);
     option.value = o.trim();
     select.append(option);
   });
   if (fd.Mandatory === "yes") {
-    select.setAttribute("required", "required");
+    // select.setAttribute("required", "required");
 
     select.addEventListener("change", function () {
       /*
@@ -89,6 +90,7 @@ function createSelect(fd) {
 
   const spanFive = document.createElement("span");
   spanFive.classList.add("dropdown-wrapper");
+  spanFive.setAttribute("aria-hidden", "true");
 
   spanOne.appendChild(spanTwo);
   spanOne.appendChild(spanFive);
@@ -266,6 +268,70 @@ function createCheckbox(fd, option) {
   return inputWrapper;
 }
 
+function createCard(fd) {
+  const images = {
+    savings: "../../icons/inlyta-copy-card.svg",
+    insiders: "../../icons/inlyta-insiders-logo.svg",
+  };
+
+  /* HEADER  */
+  const checkboxWrapper = document.createElement("div");
+  checkboxWrapper.classList.add("checker");
+
+  const span = document.createElement("span");
+  //span.classList.add("checked");
+
+  const input = document.createElement("input");
+  input.type = "checkbox";
+  input.value = fd.Type.includes("savings") ? 1 : 2;
+  input.id = fd.Type.includes("savings")
+    ? "savings_checkbox"
+    : "insiders_checkbox";
+  input.classList.add("block-171887-cid", "block-70390-cid", "form-category");
+  span.appendChild(input);
+
+  span.addEventListener("click", function (event) {
+    this.classList.toggle("checked");
+    this.closest(".form-type-option").classList.toggle("selected");
+  });
+
+  checkboxWrapper.appendChild(span);
+
+  const image = document.createElement("img");
+  image.setAttribute(
+    "src",
+    fd.Field.includes("savings") ? images["savings"] : images["insiders"]
+  );
+
+  const header = document.createElement("div");
+  header.classList.add(
+    "block-171887-cid",
+    "block-70390-cid",
+    "form-type-header"
+  );
+  header.appendChild(image);
+  header.appendChild(checkboxWrapper);
+  /* END OF HEADER */
+
+  const heading4 = document.createElement("h4");
+  heading4.textContent = fd.Label.split("\n")[0];
+
+  const blankParagraph = document.createElement("p");
+
+  const paragraph = document.createElement("p");
+  paragraph.textContent = fd.Label.split("\n")[1];
+
+  const container = document.createElement("div");
+  container.classList.add("block-171887-cid", "form-type-option");
+
+  container.appendChild(header);
+  container.appendChild(heading4);
+  container.appendChild(blankParagraph);
+  container.appendChild(paragraph);
+
+  return container;
+}
+
 const sections = {
   personalInfo: {
     id: "i9dlv",
@@ -332,6 +398,14 @@ export async function createForm(formURL) {
     "block-70390-cid",
     "form-wrapper"
   );
+
+  const formTypeSelectionWrapper = document.createElement("div");
+  formTypeSelectionWrapper.classList.add(
+    "block-171887-cid",
+    "block-70390-cid",
+    "form-type-selection"
+  );
+
   json.data.forEach((fd) => {
     fd.Type = fd.Type || "text";
 
@@ -350,8 +424,8 @@ export async function createForm(formURL) {
           section.append(createCheckbox(fd, option));
         });
         break;
-      case "label":
-        //section.append(createLabel(fd));
+      case "card":
+        formTypeSelectionWrapper.appendChild(createCard(fd));
         break;
       case "submit":
         if (section) {
@@ -388,8 +462,7 @@ export async function createForm(formURL) {
     }
   });
 
-  // const lastChild = formWrapper.lastElementChild;
-  // formWrapper.insertBefore(section, lastChild);
+  form.appendChild(formTypeSelectionWrapper);
   form.appendChild(formWrapper);
   form.addEventListener("change", () => applyRules(form, rules));
   applyRules(form, rules);

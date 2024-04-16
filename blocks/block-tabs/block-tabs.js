@@ -5,7 +5,7 @@ const createTab = (tab, index, className) => {
   button.id = `tab-${id}`;
   button.innerHTML = tab.innerHTML;
   button.setAttribute("aria-controls", `tab-${id}`);
-  button.setAttribute("aria-selected", !!index);
+  if (index === 0) button.setAttribute("aria-selected", true);
   button.setAttribute("role", "tab");
   button.setAttribute("type", "button");
 

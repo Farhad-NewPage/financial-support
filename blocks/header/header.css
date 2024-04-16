@@ -289,6 +289,7 @@ header nav .nav-sections .nav-drop[aria-expanded=true] > span {
   font-weight: bold;
   display: inline-block;
   max-width: calc(100% - 6px);
+  color: var(--link-color);
 }
 
 header nav .nav-sections .nav-drop[aria-expanded=true] > span::after {
@@ -439,6 +440,10 @@ header nav[aria-expanded=true] .nav-menu {
 header nav .nav-menu li {
   position: relative;
   padding-left: var(--spacing-20);
+}
+
+header nav .nav-menu li.active-menu {
+ color: var(--link-color);
 }
 
 header nav .nav-menu li::before {

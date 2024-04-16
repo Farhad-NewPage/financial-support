@@ -181,7 +181,7 @@ export default async function decorate(block) {
   if (navSections) {
     navSections.querySelectorAll(":scope ul > li").forEach((navSection) => {
       if (navSection.querySelector("ul")) navSection.classList.add("nav-drop");
-      else $(navSection).find("a").attr({ "aria-current": "page" });
+      // else $(navSection).find("a").attr({ "aria-current": "page" });
       $(navSection)
         .contents()
         .filter(function () {
@@ -192,10 +192,28 @@ export default async function decorate(block) {
         const expanded = navSection.getAttribute("aria-expanded") === "true";
         toggleAllNavSections(navSections);
         navSection.setAttribute("aria-expanded", expanded ? "false" : "true");
+        this.find("a").attr({ "aria-current": "page" });
       });
     });
   }
 
+  // Nav Menu
+  const navMenu = nav.querySelector(".nav-menu");
+
+  if (navMenu) {
+    navMenu.querySelectorAll(":scope ul > li").forEach((menu) => {
+      menu.firstElementChild.setAttribute("href", "javascript:void(0)");
+      menu.addEventListener("click", function () {
+        for (const li of navMenu.querySelectorAll(
+          ":scope ul > li.active-menu"
+        )) {
+          li.classList.remove("active-menu");
+        }
+        this.classList.add("active-menu");
+      });
+      return;
+    });
+  }
   // Registration Button
   const navCta = nav.querySelector(".nav-cta");
   const button = $(navCta).find("p.button-container");

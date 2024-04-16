@@ -1,0 +1,316 @@
+:root {
+    --lib-core--color-primary: #3d46ea;
+    --lib-core--color-on-primary: #ffffff;
+    --lib-core--color-primary-container: #e0e0ff;
+    --lib-core--color-on-primary-container: #00006e;
+    --lib-core--color-secondary: #0060a8;
+    --lib-core--color-on-secondary: #ffffff;
+    --lib-core--color-secondary-container: #d3e4ff;
+    --lib-core--color-on-secondary-container: #001c38;
+    --lib-core--color-background: #fffbff;
+    --lib-core--color-on-background: #1b1b1f;
+    --lib-core--color-surface: #fffbff;
+    --lib-core--color-surface-variant: #e4e1ec;
+    --lib-core--color-on-surface: #1b1b1f;
+    --lib-core--color-on-surface-variant: #46464f;
+    --lib-core--color-system-surface-surface-1: #f2effc;
+    --lib-core--color-system-surface-surface-2: #edeafb;
+    --lib-core--color-system-surface-surface-3: #e7e4fb;
+    --lib-core--color-system-surface-surface-5: #e1dffa;
+    --lib-core--color-outline: #777680;
+    --lib-core--color-outline-variant: #c7c5d0;
+    --lib-core--color-utility-error-error: #ba1a1a;
+    --lib-core--color-utility-warning-warning: #77591a;
+    --lib-core--color-utility-success-success: #2e6b3d;
+    --lib-core--color-system-white: #ffffff;
+    --lib-core--color-system-black: #000000
+}
+
+:root {
+    --lib-core--color-primary: #e8008b;
+    --lib-core--color-primary2: #e54197;
+    --lib-core--color-primary3: var(--color-scarlet-1300);
+    --lib-core--color-primary4: #d11d77;
+    /* stylelint-disable custom-property-pattern */
+    --color-pink: var(--lib-core--color-primary);
+    --color-green: #929500;
+    --color-green2: #949700;
+    --color-green-hover: #e0df38;
+    --color-green-light: #c9c82cab;
+    --color-green-dark2: #a9ae04;
+    --color-green-dark: #6f6e01;
+    --color-link: var(--color-green);
+    --color-dark: #383838;
+    --color-dark2: #1b1b1b;
+    --color-dark-buttons-color: #373b44;
+    --color-grey-light: #f6f6f6;
+    --color-grey-light2: #d8d8d8;
+    --color-baby-blue: #fafdff;
+    --color-grey-200: #f0f0e4;
+    --color-grey-900: #edede5;
+    --color-grey-1000: #858585;
+    --color-grey-border: #e6e6e6;
+    --color-khaki-600: #c8c900;
+    --color-green-900: #959600;
+    --lib-core--button-green--color: var(--color-green);
+    --lib-core--body-background-color: var(--lib-core--color-system-white);
+    --lib-core--font-family-primary: 'PfizerTomorrow-Regular', arial, sans-serif;
+    --lib-core--font-family-primary-bold: 'PfizerTomorrow-Bold', arial, sans-serif;
+    --lib-core--font-family-heading-diatype-bold: 'PfizerTomorrow-Bold', arial,
+      sans-serif;
+    --lib-core--overlay--content-background-color: var(--lib-core--color-system-white);
+    --lib-core--color-system-surface-surface-1: var(--lib-core--color-system-white);
+    --lib-core--hero--background-color: transparent;
+    --lib-core--typography-default-font-size: 18px;
+    --lib-core--typography-default-text-weight: 400;
+    --lib-core--typography-default-line-height: calc(
+      var(--lib-core--typography-default-font-size) * 1.25
+    );
+    --fixed-line-height: 29px;
+    --lib-core--typography-heading-1-alt-font-size: 40px;
+    --lib-core--typography-heading-2-alt-font-size: 24px;
+    --lib-core--typography-heading-3-alt-font-size: 22px;
+    --lib-core--typography-heading-4-alt-font-size: 22px;
+    --paragraph-font-size: 16px;
+    --subtitle-font-size: 14px;
+    --custom-dropdown-font-size: 15px;
+    --lib-core--typography-heading-headline-line-height: 120%;
+    --margin-unset: 0;
+    --padding-unset: 0;
+    --letter-spacing-unset: 0;
+    --marker-size: 18px;
+    --marker-margin-left: -1.19em;
+    --text-letter-spacing-11: 0.11px;
+    --border-left-5: 5px;
+    --padding-top-5: 5px;
+    --line-height-156: 1.56;
+    --font-weight-900: 900;
+    --font-weight-400: 400;
+    --button-height: 44px;
+    --color-bluishCyan-100: #ccecf9;
+    --color-bluishCyan-1500: #0c5276;
+    --color-lime-100: #e4efce;
+    --color-khaki-100: #c8c90017;
+    --color-scarlet-300: #ee51af;
+    --color-scarlet-700: #cc1c74;
+    --color-scarlet-800: #fd008d;
+    --color-scarlet-1300: #b7006e;
+    --color-red: red;
+    --color-yellow-100: #f1f2d6;
+    --color-yellow-400: #c9c82c;
+    --color-yellow-200: #fff3ab;
+    --color-gray-200: #fbfdff;
+    --color-gray-600: #f6f6f4;
+    --color-gray-2600: #58585a;
+    --color-gray-100: #f6f6f4;
+    --color-gray-400: #eaeae0;
+    --color-khaki-700: #ffdb00;
+    --color-font-size-gray-600: #979797;
+    --color-shadow: #ccc;
+    --color-text-shadow: #101010cc;
+    --color-bottom-border: #f5e796a3;
+    --color-bottom-border-darker: #a9ae04a3;
+    --hero-bigger-height: 450px;
+    --hero-default-height: 250px;
+    --shadow-box: var(--color-shadow);
+  }
+
+:root {
+    --lib-core--spacing-1x: 4px;
+    --lib-core--spacing-2x: 8px;
+    --lib-core--spacing-3x: 12px;
+    --lib-core--spacing-4x: 16px;
+    --lib-core--spacing-5x: 20px;
+    --lib-core--spacing-6x: 24px;
+    --lib-core--spacing-7x: 28px;
+    --lib-core--spacing-8x: 32px;
+    --lib-core--spacing-9x: 36px;
+    --lib-core--spacing-10x: 40px;
+    --lib-core--spacing-11x: 44px;
+    --lib-core--spacing-12x: 48px;
+    --lib-core--spacing-13x: 52px;
+    --lib-core--spacing-14x: 56px;
+    --lib-core--spacing-15x: 60px;
+    --lib-core--spacing-16x: 64px;
+    --lib-core--spacing-17x: 68px;
+    --lib-core--spacing-18x: 72px;
+    --lib-core--spacing-19x: 76px;
+    --lib-core--spacing-20x: 80px;
+    --lib-core--spacing-21x: 84px;
+    --lib-core--spacing-22x: 88px;
+    --lib-core--spacing-23x: 92px;
+    --lib-core--spacing-24x: 96px;
+    --lib-core--spacing-half: 2px;
+}
+
+:root {
+    --lib-core--typography-base-unit-font-size: 16px;
+    --lib-core--typography-default-font-size: 16px;
+    --lib-core--typography-default-line-height: calc(var(--lib-core--typography-default-font-size) * 1.25);
+    --lib-core--typography-default-text-decoration: none;
+    --lib-core--typography-default-text-weight: 400;
+    --lib-core--typography-callout-font-size: 29.6px;
+    --lib-core--typography-callout-line-height: calc(var(--lib-core--typography-callout-font-size) * 1);
+    --lib-core--typography-callout-text-weight: 500;
+    --lib-core--typography-heading-mid-font-size: 20px;
+    --lib-core--typography-heading-mid-line-height: calc(var(--lib-core--typography-heading-mid-font-size) * 1.2);
+    --lib-core--typography-heading-mid-text-weight: 500;
+    --lib-core--typography-smaller-font-size: 16px;
+    --lib-core--typography-smaller-line-height: calc(var(--lib-core--typography-smaller-font-size) * 1.25);
+    --lib-core--typography-smallest-font-size: 14px;
+    --lib-core--typography-smallest-line-height: calc(var(--lib-core--typography-smallest-font-size) * 1.25);
+    --lib-core--typography-heading-1-alt-font-size: 64px;
+    --lib-core--typography-heading-2-alt-font-size: 56px;
+    --lib-core--typography-heading-3-alt-font-size: 48px;
+    --lib-core--typography-heading-4-alt-font-size: 36px;
+    --lib-core--typography-heading-5-alt-font-size: 32px;
+    --lib-core--typography-heading-6-alt-font-size: 24px;
+    --lib-core--typography-heading-7-alt-font-size: 20px;
+    --lib-core--typography-heading-display-line-height: 120%;
+    --lib-core--typography-heading-display-line-height2: 125%;
+    --lib-core--typography-heading-display-text-decoration: none;
+    --lib-core--typography-heading-display-font-weight: 800;
+    --lib-core--typography-heading-headline-line-height: 120%;
+    --lib-core--typography-heading-headline-text-decoration: none;
+    --lib-core--typography-heading-headline-font-weight: 800;
+    --lib-core--typography-heading-title-line-height: 120%;
+    --lib-core--typography-heading-title-text-decoration: none;
+    --lib-core--typography-heading-title-font-weight: 700;
+    --lib-core--typography-font-body-medium: 400 16px / 1.25 var(--lib-core--font-family-primary);
+    --lib-core--typography-font-body-large: 400 20px / 1.25 var(--lib-core--font-family-primary)
+}
+
+@media(min-width: 1024px) {
+    :root {
+        --lib-core--font-size-display-large-medium-small: 64px;
+        --lib-core--font-size-title-large-medium-medium: 32px;
+        --lib-core--line-height-title-large-medium-medium: var(--lib-core--typography-heading-display-line-height2);
+        --lib-core--font-size-title-medium-medium-small: 24px;
+        --lib-core--line-height-title-medium-medium-small: var(--lib-core--typography-heading-display-line-height2);
+        --lib-core--font-size-title-medium-medium-medium: 24px;
+        --lib-core--line-height-title-medium-medium-medium: var(--lib-core--typography-heading-display-line-height2);
+        --lib-core--font-size-title-small-small-small: 20px;
+        --lib-core--line-height-title-small-small-small: var(--lib-core--typography-heading-display-line-height2);
+        --lib-core--font-size-headline-large-medium-medium: 48px;
+        --lib-core--line-height-headline-medium-medium-small: var(--lib-core--typography-heading-headline-line-height);
+        --lib-core--font-size-headline-medium-medium-small: 36px;
+        --lib-core--line-height-headline-medium-medium-small: var(--lib-core--typography-heading-display-line-height);
+        --lib-core--font-size-headline-large-medium-small: 48px;
+        --lib-core--line-height-headline-large-medium-small: var(--lib-core--typography-heading-display-line-height);
+        --lib-core--font-size-headline-small-small-small: 32px;
+        --lib-core--line-height-headline-small-small-small: var(--lib-core--typography-heading-display-line-height)
+    }
+}
+
+@media(min-width: 768px)and (max-width: 1023px) {
+    :root {
+        --lib-core--font-size-display-large-medium-small: 56px;
+        --lib-core--font-size-title-large-medium-medium: 24px;
+        --lib-core--line-height-title-large-medium-medium: var(--lib-core--typography-heading-display-line-height2);
+        --lib-core--font-size-title-medium-medium-small: 24px;
+        --lib-core--line-height-title-medium-medium-small: var(--lib-core--typography-heading-display-line-height2);
+        --lib-core--font-size-title-medium-medium-medium: 24px;
+        --lib-core--line-height-title-medium-medium-medium: var(--lib-core--typography-heading-display-line-height2);
+        --lib-core--font-size-title-small-small-small: 20px;
+        --lib-core--line-height-title-small-small-small: var(--lib-core--typography-heading-display-line-height2);
+        --lib-core--font-size-headline-large-medium-medium: 36px;
+        --lib-core--line-height-headline-large-medium-medium: var(--lib-core--typography-heading-headline-line-height);
+        --lib-core--font-size-headline-medium-medium-small: 36px;
+        --lib-core--line-height-headline-medium-medium-small: var(--lib-core--typography-heading-display-line-height);
+        --lib-core--font-size-headline-large-medium-small: 36px;
+        --lib-core--line-height-headline-large-medium-small: var(--lib-core--typography-heading-display-line-height);
+        --lib-core--font-size-headline-small-small-small: 32px;
+        --lib-core--line-height-headline-small-small-small: var(--lib-core--typography-heading-display-line-height)
+    }
+}
+
+@media(max-width: 767px) {
+    :root {
+        --lib-core--font-size-display-large-medium-small: 48px;
+        --lib-core--font-size-title-large-medium-medium: 24px;
+        --lib-core--line-height-title-large-medium-medium: var(--lib-core--typography-heading-display-line-height2);
+        --lib-core--font-size-title-medium-medium-small: 20px;
+        --lib-core--line-height-title-medium-medium-small: var(--lib-core--typography-heading-display-line-height2);
+        --lib-core--font-size-title-medium-medium-medium: 24px;
+        --lib-core--line-height-title-medium-medium-medium: var(--lib-core--typography-heading-display-line-height2);
+        --lib-core--font-size-title-small-small-small: 20px;
+        --lib-core--line-height-title-small-small-small: var(--lib-core--typography-heading-display-line-height2);
+        --lib-core--font-size-headline-large-medium-medium: 36px;
+        --lib-core--line-height-headline-large-medium-medium: var(--lib-core--typography-heading-headline-line-height);
+        --lib-core--font-size-headline-medium-medium-small: 32px;
+        --lib-core--line-height-headline-medium-medium-small: var(--lib-core--typography-heading-display-line-height);
+        --lib-core--font-size-headline-large-medium-small: 32px;
+        --lib-core--line-height-headline-large-medium-small: var(--lib-core--typography-heading-display-line-height);
+        --lib-core--font-size-headline-small-small-small: 32px;
+        --lib-core--line-height-headline-small-small-small: var(--lib-core--typography-heading-display-line-height)
+    }
+}
+
+@media(min-width: 1024px) {
+    :root {
+        --lib-core--typography-heading-headline-font-size: 48px
+    }
+}
+
+@media(min-width: 768px)and (max-width: 1023px) {
+    :root {
+        --lib-core--typography-heading-headline-font-size: 36px
+    }
+}
+
+@media(max-width: 767px) {
+    :root {
+        --lib-core--typography-heading-headline-font-size: 32px
+    }
+}
+
+@media(min-width: 1024px) {
+    :root {
+        --lib-core--typography-heading-title-font-size: 32px
+    }
+}
+
+@media(min-width: 768px)and (max-width: 1023px) {
+    :root {
+        --lib-core--typography-heading-title-font-size: 24px
+    }
+}
+
+@media(max-width: 767px) {
+    :root {
+        --lib-core--typography-heading-title-font-size: 20px
+    }
+}
+
+:root {
+    --lib-core--font-family-primary: "Pfizer Diatype", "Pfizer Diatype-fallback", sans-serif;
+    --lib-core--font-family-secondary: "Pfizer Diatype", "Pfizer Diatype-fallback", sans-serif;
+    --lib-core--font-family-primary-bold: "Pfizer Diatype Bold", "Pfizer Diatype-bold-fallback", sans-serif;
+    --lib-core--font-family-heading-diatype: "Pfizer Diatype", "Pfizer Diatype-fallback", sans-serif;
+    --lib-core--font-family-heading-tomorrow: "Pfizer Tomorrow", "Pfizer Tomorrow-fallback", sans-serif;
+    --lib-core--font-family-heading-diatype-bold: "Pfizer Diatype Bold", "Pfizer Diatype-bold-fallback", sans-serif;
+    --lib-core--font-family-fixed: monospace;
+    --lib-core--font-family-body: var(--lib-core--font-family-primary);
+    --lib-core--font-family-heading: var(--lib-core--font-family-heading-diatype-bold);
+    --lib-core--font-weight-standard: 400;
+    --lib-core--font-weight-bold: 800
+}
+
+:root {
+    --lib-core--button-text--color: var(--lib-core--color-primary);
+    --lib-core--button-text-inverted--color: var(--lib-core--color-primary-container);
+    --lib-core--button-filled--background: var(--lib-core--color-primary);
+    --lib-core--button-filled--color: var(--lib-core--color-on-primary);
+    --lib-core--button-filled-inverted--background: var(--lib-core--color-primary-container);
+    --lib-core--button-filled-inverted--color: var(--lib-core--color-on-primary-container);
+    --lib-core--button-outlined--color: var(--lib-core--color-primary);
+    --lib-core--button-outlined--border-color: var(--lib-core--color-outline);
+    --lib-core--button-outlined-inverted--color: var(--lib-core--color-primary-container);
+    --lib-core--button-outlined-inverted--border-color: var(--lib-core--color-outline-variant)
+}
+
+:root {
+    --lib-core--theme-border-radius: 16px
+}
+
+  

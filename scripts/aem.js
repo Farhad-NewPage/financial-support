@@ -336,6 +336,7 @@ function createOptimizedPicture(
       "srcset",
       `${pathname}?width=${br.width}&format=webply&optimize=medium`
     );
+    source.setAttribute("fetchpriority", "high");
     picture.appendChild(source);
   });
 

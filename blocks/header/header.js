@@ -202,7 +202,7 @@ export default async function decorate(block) {
 
   if (navMenu) {
     navMenu.querySelectorAll(":scope ul > li").forEach((menu) => {
-      menu.firstElementChild.setAttribute("href", "javascript:void(0)");
+      //menu.firstElementChild.setAttribute("href", "javascript:void(0)");
       menu.addEventListener("click", function () {
         for (const li of navMenu.querySelectorAll(
           ":scope ul > li.active-menu"

@@ -58,6 +58,8 @@ footer ul  {
 footer a:any-link {
   color: currentcolor;
   white-space: normal;
+  min-width: 48px;
+  min-height: 48px;
 }
 
 /* nav */

@@ -218,9 +218,12 @@ export default function decorate(block) {
 
   window.addEventListener("scroll", function () {
     const contentBottom = oncologyContent.getBoundingClientRect().bottom;
-    const footerTop = footer.getBoundingClientRect().top + 100;
+    const footerTop = footer.getBoundingClientRect().bottom - 100;
     const aside = document.querySelector(".core-isi-block-container");
-    if (window.innerHeight > contentBottom + 150) {
+    if (
+      window.innerHeight > contentBottom + 150 &&
+      window.innerHeight < footerTop
+    ) {
       aside.setAttribute("aria-expanded", true);
       aside.setAttribute(
         "aria-label",

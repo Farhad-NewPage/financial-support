@@ -15,7 +15,7 @@ export default async function decorate(block) {
         const optPicture = createOptimizedPicture(
           source,
           "Banner Image",
-          false,
+          true,
           [{ media: "(min-width: 600px)", width: "1280" }, { width: "420" }]
         );
 

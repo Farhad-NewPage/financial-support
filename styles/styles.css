@@ -565,6 +565,8 @@ a:any-link {
   word-break: keep-all;
   white-space: normal;
   text-decoration: none;
+  min-width: 48px;
+  min-height: 48px;
 }
 
 a:hover {

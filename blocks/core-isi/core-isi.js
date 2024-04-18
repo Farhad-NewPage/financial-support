@@ -25,7 +25,7 @@ export default function decorate(block) {
 
     button.setAttribute(
       "aria-label",
-      "+ Important Safety Information And Indications"
+      "Important Safety Information And Indications"
     );
     button.setAttribute("aria-controls", "isi");
     button.setAttribute("data-smartcapture", "isi-open");

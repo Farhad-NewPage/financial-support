@@ -27,7 +27,7 @@ export default function decorate(block) {
       "aria-label",
       "Important Safety Information And Indications"
     );
-    button.setAttribute("aria-controls", "isi");
+    // button.setAttribute("aria-controls", "isi");
     button.setAttribute("data-smartcapture", "isi-open");
 
     if (!isCollapseButton) {

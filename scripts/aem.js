@@ -319,7 +319,7 @@ function createOptimizedPicture(
   eager = false,
   breakpoints = [
     { media: "(min-width: 600px)", width: "2000" },
-    { width: "750" },
+    { width: "1280" },
   ]
 ) {
   const url = new URL(src, window.location.href);

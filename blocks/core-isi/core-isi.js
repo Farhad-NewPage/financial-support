@@ -57,21 +57,6 @@ export default function decorate(block) {
     });
 
     button.addEventListener("click", toggleExpandISIBlock);
-    // button.addEventListener("click", function () {
-    //   const aside = document.querySelector(".core-isi-block-container");
-    //   const isExpanded = aside.getAttribute("aria-expanded");
-    //   aside.setAttribute("aria-expanded", isExpanded === "true" ? false : true);
-    //   aside.setAttribute(
-    //     "aria-label",
-    //     isExpanded === "true"
-    //       ? "Important Safety Information & Use - Fully Expanded"
-    //       : "Important Safety Information And Indications - Collapsed"
-    //   );
-    //   document
-    //     .querySelector(".core-persistent-isi-container")
-    //     .classList.toggle("is-expanded");
-    // });
-
     return button;
   };
 

@@ -606,7 +606,7 @@ a.button:any-link, button.button, form button , .session-continue-button {
   display: inline-block;
   max-width: 100%;
   margin: 0;
-  line-height: 1.3;
+  /* line-height: 1.3; */
   border: var(--border-20) solid var(--button-border-color);
   border-radius: 100vw;
   padding: var(--spacing-20) var(--spacing-30);

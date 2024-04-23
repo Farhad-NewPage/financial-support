@@ -11,7 +11,7 @@ export default function decorate(block) {
     );
     document
       .querySelector(".core-persistent-isi-container")
-      .classList.toggle("is-expanded");
+      .classList.toggle("is-pinned");
   };
 
   const createButton = (isCollapseButton = false) => {
@@ -188,7 +188,6 @@ export default function decorate(block) {
     "--core-isi--collapsed-height-current",
     "56px"
   );
-
   corePersistentISIContainer.appendChild(aside);
 
   block.append(corePersistentISIContainer);
@@ -203,12 +202,9 @@ export default function decorate(block) {
 
   window.addEventListener("scroll", function () {
     const contentBottom = oncologyContent.getBoundingClientRect().bottom;
-    const footerTop = footer.getBoundingClientRect().bottom - 100;
+    const footerTop = footer.getBoundingClientRect().bottom - 600;
     const aside = document.querySelector(".core-isi-block-container");
-    if (
-      window.innerHeight > contentBottom + 150 &&
-      window.innerHeight < footerTop
-    ) {
+    if (window.innerHeight < contentBottom + 50) {
       aside.setAttribute("aria-expanded", true);
       aside.setAttribute(
         "aria-label",
@@ -216,7 +212,7 @@ export default function decorate(block) {
       );
       document
         .querySelector(".core-persistent-isi-container")
-        .classList.add("is-expanded");
+        .classList.add("is-pinned");
     } else {
       aside.setAttribute("aria-expanded", false);
       aside.setAttribute(
@@ -225,7 +221,7 @@ export default function decorate(block) {
       );
       document
         .querySelector(".core-persistent-isi-container")
-        .classList.remove("is-expanded");
+        .classList.remove("is-pinned");
     }
   });
 }

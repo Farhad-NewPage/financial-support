@@ -489,8 +489,7 @@
   }
   
   .core-isi .core-persistent-isi-container .core-isi-header-container {
-    background-color: var(--color-scarlet-1300)!important;
-    /* padding: 0px !important; */
+    background-color: var(--ibrance-purple)!important;
   }
   .core-isi .core-persistent-isi-container .core-isi-header{
     padding-right: 8px !important;
